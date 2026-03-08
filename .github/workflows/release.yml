@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    permissions:
+      contents: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest      # arm64 (M-series runner) → .dmg
+          - platform: ubuntu-22.04      # x86_64 → .deb + .AppImage
+          - platform: windows-latest    # x86_64 → .msi + .exe
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Node ──────────────────────────────────────────────────────────────
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      # ── Rust ──────────────────────────────────────────────────────────────
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: ./src-tauri -> target
+
+      # ── Python + PyInstaller ───────────────────────────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python deps
+        run: pip install -r backend/requirements.txt pyinstaller
+
+      # ── Linux system deps ──────────────────────────────────────────────────
+      - name: Install Linux system dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      # ── Build backend binary ───────────────────────────────────────────────
+      - name: Bundle backend binary
+        run: node scripts/build-backend.js
+        env:
+          SKIP_VERIFY: '1'
+
+      # ── Build Tauri app & publish to GitHub Release ────────────────────────
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: Opentill ${{ github.ref_name }}
+          releaseBody: |
+            ## Downloads
+
+            | Platform | File |
+            |---|---|
+            | Windows | `Opentill_*_x64-setup.exe` |
+            | macOS | `Opentill_*_aarch64.dmg` |
+            | Linux (Debian/Ubuntu) | `opentill_*_amd64.deb` |
+            | Linux (other) | `opentill_*_amd64.AppImage` |
+          releaseDraft: true
+          prerelease: false
