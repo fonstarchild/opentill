@@ -2,6 +2,7 @@
 testpaths = ["backend/tests"]
 addopts = "-v --tb=short"
 asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
 
 [tool.coverage.run]
 source = ["backend"]
@@ -9,9 +10,19 @@ omit = [
     "backend/tests/*",
     "backend/alembic/*",
     "backend/main_entry.py",
-    # Ecommerce connectors are reference stubs with optional deps (requests)
+    # Legacy code kept for reference — superseded by DDD structure, not imported
+    "backend/catalog/models.py",
+    "backend/catalog/router.py",
+    "backend/config/*",
+    "backend/orders/*",
+    "backend/payments/base.py",
+    "backend/payments/providers/*",
+    "backend/payments/registry.py",
+    "backend/payments/router.py",
+    "backend/shared/infrastructure/sqlmodel_repository.py",
+    # Ecommerce connectors use optional dep (requests), tested separately
     "backend/ecommerce/infrastructure/connectors/*",
-    # Online payment provider stubs (not testable without real credentials)
+    # Online payment provider stubs — require real credentials to test
     "backend/payments/infrastructure/providers/stripe_terminal.py",
     "backend/payments/infrastructure/providers/sumup.py",
     "backend/payments/infrastructure/providers/paypal.py",
