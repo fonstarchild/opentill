@@ -5,7 +5,19 @@ asyncio_mode = "auto"
 
 [tool.coverage.run]
 source = ["backend"]
-omit = ["backend/tests/*", "backend/alembic/*", "backend/main_entry.py"]
+omit = [
+    "backend/tests/*",
+    "backend/alembic/*",
+    "backend/main_entry.py",
+    # Ecommerce connectors are reference stubs with optional deps (requests)
+    "backend/ecommerce/infrastructure/connectors/*",
+    # Online payment provider stubs (not testable without real credentials)
+    "backend/payments/infrastructure/providers/stripe_terminal.py",
+    "backend/payments/infrastructure/providers/sumup.py",
+    "backend/payments/infrastructure/providers/paypal.py",
+    "backend/payments/infrastructure/providers/redsys.py",
+    "backend/payments/infrastructure/providers/square.py",
+]
 
 [tool.coverage.report]
 fail_under = 80
