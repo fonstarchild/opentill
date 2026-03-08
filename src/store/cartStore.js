@@ -34,9 +34,7 @@ const useCartStore = create((set, get) => ({
 
   clear: () => set({ items: [] }),
 
-  get subtotal() {
-    return get().items.reduce((s, i) => s + i.price * i.quantity, 0)
-  },
+  subtotal: () => get().items.reduce((s, i) => s + i.price * i.quantity, 0),
 }))
 
 export default useCartStore

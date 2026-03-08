@@ -66,14 +66,14 @@ describe('buildReceiptHtml', () => {
 
   it('includes VAT breakdown when enabled', () => {
     const html = buildReceiptHtml({ order: baseOrder, config: baseConfig })
-    expect(html).toContain('VAT 21%')
-    expect(html).toContain('VAT 10%')
+    expect(html).toContain('IVA 21%')
+    expect(html).toContain('IVA 10%')
   })
 
   it('omits VAT breakdown when disabled', () => {
     const config = { ...baseConfig, receipt: { ...baseConfig.receipt, show_vat_breakdown: false } }
     const html = buildReceiptHtml({ order: baseOrder, config })
-    expect(html).not.toContain('VAT 21%')
+    expect(html).not.toContain('IVA 21%')
   })
 
   it('includes cash change when payment is CASH', () => {

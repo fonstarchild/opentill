@@ -123,11 +123,11 @@ describe('cartStore', () => {
         useCartStore.getState().addItem(sampleProduct)
         useCartStore.getState().setQuantity(sampleProduct.id, 3)
       })
-      expect(useCartStore.getState().subtotal).toBeCloseTo(29.97)
+      expect(useCartStore.getState().subtotal()).toBeCloseTo(29.97)
     })
 
     it('returns 0 for empty cart', () => {
-      expect(useCartStore.getState().subtotal).toBe(0)
+      expect(useCartStore.getState().subtotal()).toBe(0)
     })
   })
 })
