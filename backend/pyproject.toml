@@ -1,0 +1,12 @@
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+addopts = "-v --tb=short"
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["backend"]
+omit = ["backend/tests/*", "backend/alembic/*", "backend/main_entry.py"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

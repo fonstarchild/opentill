@@ -1,0 +1,55 @@
+.sidebar {
+  width: var(--nav-width);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+.logoIcon { font-size: 1.3rem; }
+.logoText  { font-size: 1rem; font-weight: 800; letter-spacing: 0.02em; color: var(--text-primary); }
+
+.navList {
+  list-style: none;
+  padding: 0.75rem 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.navItem:hover { background: var(--surface-alt); color: var(--text-primary); }
+.navItemActive  { background: rgba(99,102,241,0.12); color: var(--accent); font-weight: 600; }
+.navItemActive:hover { background: rgba(99,102,241,0.16); }
+
+.navIcon { font-size: 1rem; width: 20px; text-align: center; }
+
+.sidebarFooter {
+  padding: 0.75rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.version { font-size: 0.75rem; color: var(--text-muted); }

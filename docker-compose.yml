@@ -1,0 +1,34 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app/backend   # hot reload
+      - opentill_data:/data
+    environment:
+      OPENTILL_PORT: 47821
+      OPENTILL_CONFIG_PATH: /data/opentill.config.json
+      DATABASE_URL: sqlite:////data/opentill.db
+    ports:
+      - "47821:47821"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src            # hot reload
+      - ./index.html:/app/index.html
+      - ./vite.config.js:/app/vite.config.js
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:47821/api
+
+volumes:
+  opentill_data:

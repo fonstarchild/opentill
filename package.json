@@ -1,0 +1,44 @@
+{
+  "name": "opentill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "backend:dev": "uvicorn backend.main:app --reload --port 47821",
+    "backend:build": "node scripts/build-backend.js"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-http": "^2",
+    "@tauri-apps/plugin-notification": "^2",
+    "@tauri-apps/plugin-os": "^2",
+    "@tauri-apps/plugin-shell": "^2",
+    "i18next": "^23",
+    "i18next-browser-languagedetector": "^7",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-i18next": "^14",
+    "recharts": "^3.8.0",
+    "zustand": "^4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/react": "^14",
+    "@testing-library/user-event": "^14",
+    "@vitejs/plugin-react": "^4",
+    "@vitest/coverage-v8": "^1",
+    "jsdom": "^24",
+    "vite": "^5",
+    "vitest": "^1"
+  }
+}

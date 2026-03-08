@@ -1,0 +1,320 @@
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+.posLayout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+  height: calc(100vh - 56px);
+  padding: 1rem;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.panelTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Search ─────────────────────────────────────────────────────────────────── */
+.searchRow { display: flex; gap: 0.5rem; }
+
+.searchInput {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+}
+.searchInput:focus { border-color: var(--accent); }
+
+.clearBtn {
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.resultsList { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0; }
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.resultItem:last-child { border-bottom: none; }
+
+.resultInfo { flex: 1; min-width: 0; }
+.resultName { display: block; font-size: 0.875rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.resultMeta { font-size: 0.75rem; color: var(--text-muted); }
+.resultPrice { font-size: 0.875rem; font-weight: 600; color: var(--accent); flex-shrink: 0; }
+
+.addBtn {
+  width: 28px; height: 28px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.addBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Scanner ────────────────────────────────────────────────────────────────── */
+.scannerHeader { display: flex; align-items: center; gap: 0.75rem; }
+.activeBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: #10b981;
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.statusMsg {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.statusOk    { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+.statusError { background: rgba(239,68,68,0.15);  color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+.hintSmall { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: auto; opacity: 0.6; }
+
+/* ── Cart ───────────────────────────────────────────────────────────────────── */
+.cart {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.cartItems { flex: 1; overflow-y: auto; margin: 0.75rem 0; }
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.cartItemInfo { flex: 1; min-width: 0; }
+.cartItemName { display: block; font-size: 0.875rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cartItemSubtotal { font-size: 0.8rem; color: var(--text-muted); }
+
+.qtyControls {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.875rem;
+}
+.qtyControls button {
+  width: 24px; height: 24px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.qtyControls button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.removeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+.removeBtn:hover { color: #ef4444; }
+
+.cartTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.totalAmount { color: var(--accent); }
+
+.checkoutBtn {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+.checkoutBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+.checkoutBtn:hover:not(:disabled) { filter: brightness(1.1); }
+
+/* ── Checkout dialog ────────────────────────────────────────────────────────── */
+.dialogOverlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+
+.dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.dialogHeader h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+.dialogClose { background: transparent; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; }
+
+.dialogBody {
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dialogActions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+
+.fieldLabel { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+
+.fieldInput {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  resize: vertical;
+}
+.fieldInput:focus { border-color: var(--accent); }
+
+.methodList { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.methodBtn {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--method-color, #6366f1);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--method-color, #6366f1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.methodBtnActive {
+  background: var(--method-color, #6366f1);
+  color: #fff;
+}
+
+.totalBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-alt);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+}
+
+.changeBox {
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #10b981;
+}
+
+.errorMsg {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  color: #ef4444;
+}
+
+.cancelBtn {
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.confirmBtn {
+  padding: 0.5rem 1.5rem;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.confirmBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Misc ───────────────────────────────────────────────────────────────────── */
+.hint { font-size: 0.875rem; color: var(--text-muted); }

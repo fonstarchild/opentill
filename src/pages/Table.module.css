@@ -1,0 +1,57 @@
+.tableWrapper { flex: 1; overflow: auto; padding: 0 1rem 1rem; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.table th {
+  text-align: left; padding: 0.5rem 0.75rem;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em;
+  color: var(--text-muted); text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.table td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border-subtle); }
+.table tr:hover td { background: var(--surface-alt); }
+
+.mono { font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--text-muted); }
+.empty { text-align: center; color: var(--text-muted); padding: 2rem; }
+
+.stockRow { display: flex; align-items: center; gap: 0.4rem; }
+.stockRow button { width: 22px; height: 22px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.stockRow button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; }
+.badgeGreen { background: rgba(16,185,129,0.15); color: #10b981; }
+.badgeRed   { background: rgba(239,68,68,0.15);  color: #ef4444; }
+.badgeGray  { background: var(--border); color: var(--text-muted); }
+
+.editBtn { padding: 0.3rem 0.75rem; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); cursor: pointer; font-size: 0.8rem; }
+.editBtn:hover { border-color: var(--accent); color: var(--accent); }
+
+.primaryBtn { padding: 0.45rem 1.1rem; background: var(--accent); border: none; border-radius: var(--radius-sm); color: #fff; font-weight: 600; cursor: pointer; font-size: 0.875rem; }
+.primaryBtn:hover:not(:disabled) { background: var(--accent-hover); }
+.primaryBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.cancelBtn { padding: 0.45rem 1.1rem; background: transparent; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer; font-size: 0.875rem; }
+.cancelBtn:hover { border-color: var(--text-muted); color: var(--text-primary); }
+
+.searchInput { padding: 0.45rem 0.75rem; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 0.875rem; outline: none; }
+.searchInput:focus { border-color: var(--accent); }
+
+/* Modal */
+.modalOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); width: 100%; max-width: 480px; max-height: 90vh; display: flex; flex-direction: column; }
+.modalHeader { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.modalHeader h3 { font-size: 1rem; font-weight: 700; }
+.modalHeader button { background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; }
+.modalBody { padding: 1.25rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.modalFooter { display: flex; gap: 0.75rem; padding: 1rem 1.25rem; border-top: 1px solid var(--border); justify-content: flex-end; }
+
+.field { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--text-muted); }
+.input { padding: 0.45rem 0.75rem; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 0.875rem; outline: none; }
+.input:focus { border-color: var(--accent); }
+.error { color: var(--danger); font-size: 0.875rem; }
+
+/* Settings */
+.sectionTitle { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+
+.providerCard { background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 0.5rem; }
+.providerHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; }
+.providerFields { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }

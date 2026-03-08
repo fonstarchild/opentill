@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Default Opentill capabilities","local":true,"windows":["main"],"permissions":["core:default","shell:allow-spawn","shell:allow-execute","shell:allow-kill","http:default","os:default","notification:default"]}}

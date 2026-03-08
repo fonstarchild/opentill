@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="80" fill="#1a1a2e"/>
+  <rect x="80" y="180" width="352" height="220" rx="16" fill="#16213e"/>
+  <rect x="100" y="200" width="312" height="180" rx="8" fill="#0f3460"/>
+  <!-- Screen -->
+  <rect x="120" y="220" width="272" height="120" rx="4" fill="#1a1a2e"/>
+  <!-- Till icon - cash drawer -->
+  <rect x="140" y="240" width="232" height="80" rx="4" fill="#e94560"/>
+  <text x="256" y="292" font-family="monospace" font-size="48" fill="white" text-anchor="middle" font-weight="bold">$</text>
+  <!-- Buttons -->
+  <rect x="120" y="360" width="60" height="20" rx="4" fill="#e94560"/>
+  <rect x="200" y="360" width="60" height="20" rx="4" fill="#e94560"/>
+  <rect x="280" y="360" width="60" height="20" rx="4" fill="#e94560"/>
+  <rect x="360" y="360" width="32" height="20" rx="4" fill="#4ecca3"/>
+</svg>
